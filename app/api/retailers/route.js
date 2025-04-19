@@ -52,21 +52,13 @@ export async function POST(request) {
     const body = await request.json();
 
     // Required fields
-    const { name, location, category, addedBy } = body;
+    const { name, location, category } = body;
 
     // Client-side already validates, but server-side check for security
-    if (!name || !location || !category || !addedBy) {
+    if (!name || !location || !category) {
       return NextResponse.json(
-        { error: "Name, location, category, and addedBy are required." },
+        { error: "Name, location, category are required." },
         { status: 400 }
-      );
-    }
-
-    // Authenticate using the "addedBy" value
-    if (addedBy.trim() !== "ami gay") {
-      return NextResponse.json(
-        { error: "Authentication failed." },
-        { status: 401 }
       );
     }
 

@@ -16,6 +16,7 @@ import {
   FiAlertCircle,
   FiShield,
 } from "react-icons/fi";
+import toast from "react-hot-toast";
 
 export default function ModernRetailerForm({ onAddRetailer }) {
   const [formData, setFormData] = useState({
@@ -85,6 +86,7 @@ export default function ModernRetailerForm({ onAddRetailer }) {
       });
 
       setIsOpen(false);
+      toast.success("Retailer added successfully!");
     }
   };
 

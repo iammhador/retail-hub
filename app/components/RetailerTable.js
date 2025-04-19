@@ -14,6 +14,7 @@ import {
   FiChevronDown,
 } from "react-icons/fi";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function ModernRetailerTable({
   retailers,
@@ -268,7 +269,7 @@ export default function ModernRetailerTable({
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <motion.button
+                      {/* <motion.button
                         whileHover={{
                           scale: 1.1,
                           rotate: 3,
@@ -283,14 +284,26 @@ export default function ModernRetailerTable({
                           rotate: 0,
                           transition: { duration: 0.1 },
                         }}
-                        onClick={() => onEditRetailer(retailer)}
+                        onClick={() => {
+                          const confirmation = window.prompt(
+                            "Give authentication text to confirm editing of this retailer."
+                          );
+                          if (confirmation === "ami gay") {
+                            onEditRetailer(retailer);
+                            toast.success("Retailer ready for editing!");
+                          } else {
+                            toast.warning(
+                              "Retailer not edited. Confirmation did not match."
+                            );
+                          }
+                        }}
                         className="group relative inline-flex items-center justify-center w-10 h-10 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-all duration-300 ease-in-out shadow-md hover:shadow-lg"
                       >
                         <FiEdit3 className="text-white transition-transform duration-300 group-hover:rotate-12" />
                         <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           Edit
                         </span>
-                      </motion.button>
+                      </motion.button> */}
 
                       <motion.button
                         whileHover={{
@@ -308,12 +321,16 @@ export default function ModernRetailerTable({
                           transition: { duration: 0.1 },
                         }}
                         onClick={() => {
-                          if (
-                            window.confirm(
-                              "Are you sure you want to delete this retailer?"
-                            )
-                          ) {
+                          const confirmation = window.prompt(
+                            "Give authentication text to confirm deletion of this retailer."
+                          );
+                          if (confirmation === "ami gay") {
                             onDeleteRetailer(retailer.id);
+                            toast.success("Retailer deleted successfully!");
+                          } else {
+                            toast.warning(
+                              "Retailer not deleted. Confirmation did not match."
+                            );
                           }
                         }}
                         className="group relative inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-red-500 to-pink-600 text-white rounded-full hover:from-red-600 hover:to-pink-700 transition-all duration-300 ease-in-out shadow-md hover:shadow-lg"

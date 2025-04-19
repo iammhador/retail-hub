@@ -1,5 +1,5 @@
 import "./globals.css";
-
+import toast, { Toaster } from "react-hot-toast";
 export const metadata = {
   title: {
     default: "RetailHub: Track and Manage Your Retailers",
@@ -40,6 +40,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="scroll-smooth antialiased">
       <body className="bg-blue-50 text-gray-900 font-sans leading-normal tracking-normal min-h-screen flex flex-col">
         <div className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <Toaster position="top-right" reverseOrder={false} />
           {children}
         </div>
         <footer className="bg-blue-100 py-6 mt-8">
