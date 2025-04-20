@@ -325,7 +325,7 @@ export default function ModernRetailerTable({
                             "Give authentication text to confirm deletion of this retailer."
                           );
                           if (confirmation === "ami gay") {
-                            onDeleteRetailer(retailer.id);
+                            onDeleteRetailer(retailer._id);
                             toast.success("Retailer deleted successfully!");
                           } else {
                             toast.warning(
